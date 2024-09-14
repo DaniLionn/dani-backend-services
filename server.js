@@ -1,6 +1,6 @@
 const express = require("express");
-const rbx = require("noblox.js");
-const { Webhook } = require("discord-webhook-node");
+//const rbx = require("noblox.js");
+//const { Webhook } = require("discord-webhook-node");
 const axios = require("axios");
 const app = express();
 var groupId = 33568849;
@@ -8,14 +8,7 @@ var cookie = process.env["cookie"];
 app.use(express.json());
 
 async function startApp() {
-  try {
-    await rbx.setCookie(
-      "_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_" +
-        cookie
-    );
-    let currentUser = await rbx.getCurrentUser();
-    console.log(currentUser.UserName);
-  } catch (err) {}
+
 }
 
 const isValidJSON = (str) => {
@@ -27,12 +20,12 @@ const isValidJSON = (str) => {
   }
 };
 
-app.get("/ranker", (req, res) => {
+app.get("/ranker", async (req, res) => {
   var User = req.query.userid;
   var Rank = req.query.rank;
 
   try {
-    rbx.setRank(groupId, parseInt(User), parseInt(Rank));
+    await axios.patch()
     res.send("Ranked!");
   } catch (err) {
     console.log(err);
