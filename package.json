@@ -1,0 +1,25 @@
+{
+  "name": "dani-backend-services",
+  "version": "1.0.0",
+  "description": "backend server for various projects of mine (mostly roblox games) ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaniLionn/dani-backend-services.git"
+  },
+  "author": "DaniLionn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaniLionn/dani-backend-services/issues"
+  },
+  "homepage": "https://github.com/DaniLionn/dani-backend-services#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "discord-webhook-node": "^1.1.8",
+    "express": "^4.21.0",
+    "noblox.js": "^6.0.2"
+  }
+}
