@@ -3,13 +3,9 @@ const express = require("express");
 //const { Webhook } = require("discord-webhook-node");
 const axios = require("axios");
 const app = express();
-var groupId = 33568849;
-var cookie = process.env["cookie"];
 app.use(express.json());
 
-async function startApp() {
-
-}
+async function startApp() {}
 
 const isValidJSON = (str) => {
   try {
@@ -23,9 +19,31 @@ const isValidJSON = (str) => {
 app.get("/ranker", async (req, res) => {
   var User = req.query.userid;
   var Rank = req.query.rank;
+  var group = req.query.group;
 
   try {
-    await axios.patch()
+    if (group == 33568849) {
+      await axios.patch(
+        `https://groups.roblox.com/v1/groups${group}/users/${User}`,
+        {
+          headers: {
+            Cookie: `.ROBLOSECURITY=${process.env["neon_green_cookie"]}`,
+          },
+          roleId: Rank,
+        }
+      );
+    } else {
+      await axios.patch(
+        `https://groups.roblox.com/v1/groups${group}/users/${User}`,
+        {
+          headers: {
+            Cookie: `.ROBLOSECURITY=${process.env["danibot_cookie"]}`,
+          },
+          roleId: Rank,
+        }
+      );
+    }
+
     res.send("Ranked!");
   } catch (err) {
     console.log(err);
